@@ -7,13 +7,13 @@ function Traveler(name) {
 Traveler.prototype = {
   constructor: Traveler,
   hunt: function () {
-    this.food = +2;
+    this.food + 2;
   },
   eat: function () {
     if (this.food > 0) {
-      this.food = -1;
+      this.food - 1;
     }
-    if (this.food === 0) {
+    if (this.food < 1) {
       this.isHealthy = false;
     }
   },
@@ -37,19 +37,20 @@ Wagon.prototype = {
   },
   shouldQuarantine: function () {
     for (let i = 0; i < this.list.length; i++) {
-      if ((this.list[i].isHealthy = false)) {
-        return true;
-      } else {
+      if (this.list[i].isHealthy === false) {
         return false;
+      } else {
+        return true;
       }
     }
   },
   totalFood: function () {
-    let travelersFoods = [];
+    let travelersFoods = 1;
 
     for (let i = 0; i < this.list.length; i++) {
-      travelersFoods += this.list[i];
+      travelersFoods += this.list[i].food;
     }
+    return travelersFoods;
   },
 };
 
