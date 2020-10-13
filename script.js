@@ -10,6 +10,7 @@ class Traveler {
   }
 
   eat() {
+    // console.log(`${this.name} ${this.food}`);
     if (this.food > 0) {
       return (this.food -= 1);
     } else {
@@ -129,12 +130,10 @@ sarahunter.eat();
 //console.log(wagon);
 drsmith.eat();
 //console.log(drsmith.food);
-
 //console.log(juan.food);
 juan.eat();
 juan.eat(); // juan agora está doente (sick)
-console.log(juan);
-
+//console.log(juan);
 console.log(
   `#6: Quarantine should be true. Actual: ${wagon.shouldQuarantine()}`
 );
