@@ -21,23 +21,23 @@ Traveler.prototype = {
 
 function Wagon(capacity) {
   this.capacity = capacity;
-  this.list = [];
+  this.passengers = [];
 }
 
 Wagon.prototype = {
   constructor: Wagon,
   getAvailableSeatCount: function () {
-    let assentosVagos = this.capacity - this.list.length;
+    let assentosVagos = this.capacity - this.passengers.length;
     return assentosVagos;
   },
   join: function (Traveler) {
-    if (this.capacity > this.list.length) {
-      this.list.push(Traveler);
+    if (this.capacity > this.passengers.length) {
+      this.passengers.push(Traveler);
     }
   },
   shouldQuarantine: function () {
-    for (let i = 0; i < this.list.length; i++) {
-      if (this.list[i].isHealthy === false) {
+    for (let i = 0; i < this.passengers.length; i++) {
+      if (this.passengers[i].isHealthy === false) {
         return false;
       } else {
         return true;
@@ -47,8 +47,8 @@ Wagon.prototype = {
   totalFood: function () {
     let travelersFoods = 1;
 
-    for (let i = 0; i < this.list.length; i++) {
-      travelersFoods += this.list[i].food;
+    for (let i = 0; i < this.passengers.length; i++) {
+      travelersFoods += this.passengers[i].food;
     }
     return travelersFoods;
   },
