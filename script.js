@@ -1,3 +1,60 @@
+class Traveler {
+  constructor(name) {
+    this.name = name;
+    this.food = 1;
+    this.isHealthy = true;
+  }
+
+  hunt() {
+    this.food + 2;
+  }
+
+  eat() {
+    if (this.food > 0) {
+      this.food - 1;
+    }
+    if (this.food < 1) {
+      this.isHealthy = false;
+    }
+  }
+}
+
+class Wagon {
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.passengers = [];
+  }
+
+  getAvailableSeatCount() {
+    let assentosVagos = this.capacity - this.passengers.length;
+    return assentosVagos;
+  }
+  join(Traveler) {
+    if (this.capacity > this.passengers.length) {
+      this.passengers.push(Traveler);
+    }
+  }
+  shouldQuarantine() {
+    for (let i = 0; i < this.passengers.length; i++) {
+      if (this.passengers[i].isHealthy === false) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
+  totalFood() {
+    let travelersFoods = 1;
+
+    for (let i = 0; i < this.passengers.length; i++) {
+      travelersFoods += this.passengers[i].food;
+    }
+    return travelersFoods;
+  }
+}
+
+//-------------------OREGON TRAIL--------------------------
+/*
 function Traveler(name) {
   this.name = name;
   this.food = 1;
@@ -53,7 +110,9 @@ Wagon.prototype = {
     return travelersFoods;
   },
 };
+*/
 
+//TESTE
 // Criar uma carroça que comporta 2 pessoas
 let wagon = new Wagon(2);
 // Criar três viajantes
